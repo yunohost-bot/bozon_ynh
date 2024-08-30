@@ -1,18 +1,14 @@
 #!/bin/bash
 
 #=================================================
-# COMMON VARIABLES
-#=================================================
-
-#=================================================
-# PERSONAL HELPERS
+# COMMON VARIABLES AND CUSTOM HELPERS
 #=================================================
 
 # Clean & copy files needed to final folder
 myynh_clean_source () {
     find "$install_dir" -type f -name ".htaccess" -delete
     if [ -e "$install_dir/.gitignore" ]; then
-        ynh_secure_remove --file="$install_dir/.gitignore"
+        ynh_safe_rm "$install_dir/.gitignore"
     fi
 }
 
@@ -31,11 +27,3 @@ myynh_urlencode() {
     echo "${data##/?}"
     return 0
 }
-
-#=================================================
-# EXPERIMENTAL HELPERS
-#=================================================
-
-#=================================================
-# FUTURE OFFICIAL HELPERS
-#=================================================
